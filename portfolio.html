@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQ5QC5F6MW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TQ5QC5F6MW');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Metadata -->
+    <title>Verified E-commerce & SEO Portfolio | Libin TB</title>
+    <meta name="description" content="Explore verified performance marketing case studies, custom Shopify development, and technical SEO results delivered by Libin TB, an e-commerce growth specialist in Kerala.">
+    <meta name="keywords" content="e-commerce portfolio, shopify developer kerala, performance marketing case study, technical seo expert, libin tb portfolio">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="https://libinmarketing.com/portfolio.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://libinmarketing.com/portfolio.html" />
+    <meta property="og:title" content="Verified Marketing Case Studies | Libin TB Portfolio" />
+    <meta property="og:description" content="See real results: scaled Shopify stores, 3x+ ROAS campaigns, and technical SEO takeovers by Libin TB." />
+    <meta property="og:image" content="https://libinmarketing.com/libin.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://libinmarketing.com/portfolio.html" />
+    <meta property="twitter:title" content="Verified Marketing Case Studies | Libin TB Portfolio" />
+    <meta property="twitter:description" content="Proven marketing case studies and Shopify results by Libin TB, Kerala's top digital marketing professional." />
+    <meta property="twitter:image" content="https://libinmarketing.com/libin.jpg" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon and Brand Icons for Google / Browsers -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <!-- Styles -->
+    <link rel="stylesheet" href="hello.css">
+    <style>
+        /* Specific Portfolio Styles */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border-color, #333);
+            color: var(--text-secondary);
+            padding: 8px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+            font-weight: 500;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-blue);
+            color: #fff;
+            border-color: var(--accent-blue);
+        }
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem !important;
+            }
+            .page-header {
+                padding: 100px 1.5rem 30px !important;
+            }
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            padding-bottom: 100px;
+        }
+        .portfolio-card {
+            aspect-ratio: 1 / 1;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-blue);
+        }
+        .portfolio-img {
+            height: 240px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .portfolio-content {
+            padding: 32px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .portfolio-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .tag {
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            color: var(--accent-blue);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            font-family: var(--font-heading);
+        }
+        .portfolio-title {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            font-family: var(--font-heading);
+            color: #fff;
+        }
+        .portfolio-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+        .portfolio-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px;
+            margin-top: auto;
+        }
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-lime);
+            font-family: var(--font-heading);
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="logo.png" alt="Libin Marketing Logo" class="logo-img">
+            </a>
+
+            <!-- Hamburger Menu Button -->
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="portfolio.html" class="active-nav">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li class="mobile-only"><a href="index.html#contact" class="btn btn-primary">Get a Quote</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-primary nav-cta">Get a Quote</a>
+        </div>
+    </nav>
+    <!-- Page Header -->
+    <header class="page-header reveal">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 150px 2rem 50px; text-align: center;">
+            <h1 style="font-size: 3rem; margin-bottom: 20px;">Project <span class="text-gradient">Portfolio</span></h1>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">A deep dive into high-performance campaigns and precise technical executions.</p>
+        </div>
+    </header>
+    <main class="portfolio-container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+        <div class="portfolio-filters reveal">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Performance Marketing</button>
+            <button class="filter-btn">Web / SaaS</button>
+            <button class="filter-btn">SEO</button>
+        </div>
+        <div class="portfolio-grid" id="portfolio_grid">
+            <!-- Projects Grid -->
+            <div style="grid-column: 1/-1; text-align: center; padding: 4rem;">
+                <div class="loader-spinner" style="margin: 0 auto 1rem;"></div>
+                <p style="color: var(--text-secondary); font-family: var(--font-mono);">LOADING_PROJECTS...</p>
+            </div>
+        </div>
+    </main>
+    <!-- Footer Navigation (Horizontal Matrix) -->
+    <section class="footer-nav animate-in">
+        <div class="footer-nav-container">
+            <ul class="footer-links">
+                <li><a href="index.html" data-glow="true">Home</a></li>
+                <li><a href="index.html#about" data-glow="true">About</a></li>
+                <li><a href="index.html#services" data-glow="true">Services</a></li>
+                <li><a href="portfolio.html" data-glow="true">Portfolio</a></li>
+                <li><a href="blog.html" data-glow="true">Blog</a></li>
+                <li><a href="index.html#contact" data-glow="true">Contact</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: #0d0d0d; border-top: 2px solid #333; padding: 2rem 0; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+            <div class="nav-logo" style="margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                <img src="logo.png" alt="Libin Marketing Logo" class="logo-img">
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">© 2026 Libin TB. Hand-coded with Vanilla CSS and Vibe Coding protocols.</p>
+            <div style="margin-top: 0.5rem;">
+                <a href="privacy.html" style="color: var(--text-secondary); font-size: 0.8rem; text-decoration: none;"
+                    onmouseover="this.style.color='var(--accent-lime)';"
+                    onmouseout="this.style.color='var(--text-secondary)';" data-glow="true">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Logic
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Handle Word Splitting for Glow Effect (Consistent with Index)
+            const glowElements = document.querySelectorAll('.page-header h1, .portfolio-title, .nav-links a, .btn');
+            glowElements.forEach(el => {
+                const text = el.textContent.trim();
+                const words = text.split(/\s+/);
+                el.innerHTML = '';
+                words.forEach((word, index) => {
+                    const span = document.createElement('span');
+                    span.textContent = word;
+                    span.classList.add('glow-word');
+                    span.style.setProperty('--word-index', index);
+                    el.appendChild(span);
+                });
+            });
+
+            // Static Projects Data
+            const projects = [
+                {
+                    title: "Hyper-Local E-com Engine",
+                    description: "Engineered a custom checkout flow for a Thrissur-based retail giant, integrating localized payment gateways and reducing cart abandonment by 35%.",
+                    tech_stack: ["Performance Marketing", "Custom UI"],
+                    brand: "Performance Marketing",
+                    image_url: "thrissur_ecommerce.png"
+                },
+                {
+                    title: "SaaS Velocity Framework",
+                    description: "Scaled a Kerala-born B2B SaaS platform using highly segmented Meta Ad targeting combined with Vibe-coded landing pages.",
+                    tech_stack: ["Meta Ads", "SaaS Growth"],
+                    brand: "Web / SaaS",
+                    image_url: "saas_vs_nocode.png"
+                },
+                {
+                    title: "Semantic SEO Takeover",
+                    description: "Completely rebuilt the site architecture and internal linking for an enterprise client, yielding massive organic traffic gains.",
+                    tech_stack: ["Technical SEO", "Content Strategy"],
+                    brand: "SEO",
+                    image_url: "shopify_woocommerce_seo.png"
+                }
+            ];
+
+            const portfolioGrid = document.getElementById('portfolio_grid');
+            
+            function renderProjects(filterCategory = null) {
+                portfolioGrid.innerHTML = '';
+                
+                const filtered = filterCategory 
+                    ? projects.filter(p => p.brand === filterCategory)
+                    : projects;
+                
+                if (filtered.length === 0) {
+                    portfolioGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 4rem;"><p>No projects found for this category.</p></div>';
+                    return;
+                }
+
+                filtered.forEach(project => {
+                    const card = document.createElement('div');
+                    card.className = 'portfolio-card reveal visible';
+                    
+                    const tags = project.tech_stack ? project.tech_stack.map(tag => `<span class="tag">${tag}</span>`).join('') : '';
+
+                    card.innerHTML = `
+                        <img src="${project.image_url}" alt="${project.title}" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <div class="portfolio-tags">${tags}</div>
+                            <h3 class="portfolio-title">${project.title}</h3>
+                            <p class="portfolio-desc">${project.description}</p>
+                            <div class="portfolio-stats">
+                                <div class="stat">
+                                    <span class="stat-value">LIVE</span>
+                                    <span class="stat-label">Status</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">${project.brand}</span>
+                                    <span class="stat-label">Category</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    portfolioGrid.appendChild(card);
+                });
+
+                // Apply text glow effects to dynamic titles
+                const newGlowElements = portfolioGrid.querySelectorAll('.portfolio-title');
+                newGlowElements.forEach(el => {
+                    const text = el.textContent.trim();
+                    const words = text.split(/\s+/);
+                    el.innerHTML = '';
+                    words.forEach((word, index) => {
+                        const span = document.createElement('span');
+                        span.textContent = word;
+                        span.classList.add('glow-word');
+                        span.style.setProperty('--word-index', index);
+                        el.appendChild(span);
+                    });
+                });
+            }
+
+            renderProjects();
+
+            // Portfolio filtering logic
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const category = this.textContent === 'All' ? null : this.textContent.trim();
+                    renderProjects(category);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

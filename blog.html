@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQ5QC5F6MW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TQ5QC5F6MW');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Metadata -->
+    <title id="page-title">Digital Marketing Blog & Guides | Libin TB</title>
+    <meta id="meta-desc" name="description" content="Read conversion-focused performance marketing strategies, Shopify guides, and technical SEO playbooks by Libin TB, an e-commerce specialist in Kerala.">
+    <meta name="keywords" content="marketing blog kerala, seo blog, shopify tips, meta ads strategy, e-commerce scale guides">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="https://libinmarketing.com/blog.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://libinmarketing.com/blog.html" />
+    <meta property="og:title" content="Digital Marketing Blog & Guides | Libin TB" />
+    <meta property="og:description" content="Read actionable marketing insights, Shopify store tips, and technical SEO guides by Libin TB." />
+    <meta property="og:image" content="https://libinmarketing.com/libin.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://libinmarketing.com/blog.html" />
+    <meta property="twitter:title" content="Digital Marketing Blog & Guides | Libin TB" />
+    <meta property="twitter:description" content="Actionable e-commerce and performance marketing guides by Libin TB, Kerala's top marketing professional." />
+    <meta property="twitter:image" content="https://libinmarketing.com/libin.jpg" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon and Brand Icons for Google / Browsers -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <!-- Styles -->
+    <link rel="stylesheet" href="hello.css">
+
+    <style>
+        /* Blog Layout Styles */
+        .blog-hub-header {
+            padding: 150px 2rem 50px;
+            text-align: center;
+            border-bottom: 2px solid #333;
+            background-color: var(--surface-color);
+        }
+
+        .blog-hub-subtitle {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            font-size: 1.1rem;
+        }
+
+        .blog-hub-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+        }
+
+        .blog-hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .blog-card {
+            background-color: var(--surface-color);
+            border: var(--brutal-border);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+        }
+
+        .blog-card:hover {
+            transform: translate(-6px, -6px);
+            box-shadow: var(--shadow-lime);
+            border-color: var(--accent-lime);
+        }
+
+        .blog-image-placeholder {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            overflow: hidden;
+            border-bottom: 2px solid #333;
+            background-color: #111;
+        }
+
+        .blog-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .blog-image-placeholder img {
+            transform: scale(1.05);
+        }
+
+        .blog-card-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .blog-card-meta {
+            font-family: var(--font-heading);
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .blog-card-title {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-card-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .blog-card-title a:hover {
+            color: var(--accent-lime);
+        }
+
+        .blog-card-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        /* Reader Specific Styles */
+        .blog-post-header {
+            padding-top: 140px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #333;
+            background-color: var(--surface-color);
+        }
+
+        .blog-post-meta {
+            font-family: var(--font-heading);
+            color: var(--accent-lime);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .blog-post-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .blog-post-banner {
+            width: 100%;
+            border: var(--brutal-border);
+            box-shadow: var(--shadow-lime);
+            margin-bottom: 3rem;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 992px) {
+            .blog-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        .blog-main-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .blog-main-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-main-content h2 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin: 2.5rem 0 1.5rem 0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
+        }
+
+        .blog-main-content h3 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .blog-main-content ul, .blog-main-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .blog-main-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Interactive Checklist Component styling */
+        .seo-dashboard {
+            background-color: var(--surface-color);
+            border: var(--brutal-border);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .seo-dashboard::before {
+            content: "SYSTEM_DIAGNOSTICS_MODULE";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--bg-color);
+            padding: 0 10px;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            color: var(--accent-lime);
+            border: 1px solid #333;
+        }
+
+        .progress-bar-container {
+            margin-bottom: 2rem;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .progress-track {
+            height: 15px;
+            background-color: #111;
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--accent-lime);
+            width: 0%;
+            transition: width 0.4s cubic-bezier(0.1, 0.8, 0.2, 1);
+            box-shadow: 0 0 10px rgba(198, 255, 0, 0.5);
+        }
+
+        .checklist-group {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: var(--bg-color);
+            border: 1px solid #333;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .checklist-item:hover {
+            border-color: var(--accent-blue);
+            transform: translateX(4px);
+        }
+
+        .checklist-checkbox-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.2rem;
+        }
+
+        .checklist-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--text-primary);
+            background-color: transparent;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .checklist-checkbox:checked {
+            background-color: var(--accent-lime);
+            border-color: var(--accent-lime);
+        }
+
+        .checklist-checkbox:checked::after {
+            content: "✓";
+            color: #000;
+            font-weight: 900;
+            font-size: 0.85rem;
+            position: absolute;
+            display: block;
+        }
+
+        .checklist-text {
+            flex-grow: 1;
+        }
+
+        .checklist-item-title {
+            font-weight: 700;
+            font-family: var(--font-heading);
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            transition: all 0.2s ease;
+        }
+
+        .checklist-item.checked {
+            border-color: rgba(198, 255, 0, 0.3);
+            background-color: rgba(198, 255, 0, 0.02);
+        }
+
+        .checklist-item.checked .checklist-item-title {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+        }
+
+        /* Sidebar widgets */
+        .sidebar-widgets {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .sidebar-widget {
+            background-color: var(--surface-color);
+            border: 1px solid #333;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .sidebar-widget-title {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-blue);
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
+        }
+
+        .author-box {
+            text-align: center;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 2px solid var(--accent-blue);
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .author-name {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .author-bio {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .cta-widget {
+            border: 2px solid var(--accent-lime);
+            box-shadow: 6px 6px 0px var(--accent-lime);
+        }
+
+        /* Example blocks */
+        .seo-example-block {
+            background-color: #0b0b0b;
+            border-left: 3px solid var(--accent-blue);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+        }
+
+        .seo-example-label {
+            color: var(--accent-blue);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .seo-example-content {
+            color: var(--text-primary);
+            word-break: break-all;
+        }
+
+        .seo-good {
+            color: var(--accent-lime);
+            font-weight: 700;
+        }
+
+        .seo-bad {
+            color: var(--accent-pink);
+            font-weight: 700;
+        }
+
+        .back-link-wrapper {
+            margin-top: 3rem;
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-lime);
+            transform: translateX(-4px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="logo.png" alt="Libin Marketing Logo" class="logo-img">
+            </a>
+
+            <!-- Hamburger Menu Button -->
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="blog.html" class="active-nav">Blog</a></li>
+                <li class="mobile-only"><a href="index.html#contact" class="btn btn-primary">Get a Quote</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-primary nav-cta">Get a Quote</a>
+        </div>
+    </nav>
+
+    <!-- Main Content wrapper -->
+    <main>
+        <!-- BLOG HUB VIEW (Listing) -->
+        <div id="blog-hub-view" style="display: none;">
+            <header class="blog-hub-header animate-in">
+                <div style="max-width: 1200px; margin: 0 auto;">
+                    <h1>The <span class="highlight-lime">Marketing Journal</span></h1>
+                    <p class="blog-hub-subtitle">Insights, performance marketing playbooks, conversion optimization strategies, and technical SEO checklists to scale brands.</p>
+                </div>
+            </header>
+
+            <section class="blog-hub-container">
+                <div class="blog-hub-grid" id="blog-grid-root">
+                    <!-- Dynamic grid cards will be loaded here dynamically from the inlined articles below -->
+                </div>
+            </section>
+        </div>
+
+        <!-- BLOG POST VIEW (Reader) -->
+        <div id="blog-post-view" style="display: none;">
+            <!-- Dynamic Post Header -->
+            <header class="blog-post-header">
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                    <div class="blog-post-meta" id="post-meta-root">
+                        <!-- Loaded dynamically -->
+                    </div>
+                    <h1 class="blog-post-title" id="post-title-root">Loading Article...</h1>
+                </div>
+            </header>
+
+            <!-- Dynamic Post Layout -->
+            <div class="blog-layout">
+                <main class="blog-main-content">
+                    <!-- Article Banner -->
+                    <img id="post-banner-root" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" alt="Blog Post Banner" class="blog-post-banner">
+
+                    <!-- Content injection root -->
+                    <div id="post-content-root">
+                        
+                        <!-- Statically Inlined Article 1: Shopify SEO -->
+                        <article id="art-shopify-woocommerce-seo" class="blog-article-content" style="display: none;"
+                            data-title="On-Page SEO Checklist for Shopify & WooCommerce Product Pages"
+                            data-meta="SEO & E-commerce"
+                            data-readtime="8 min read"
+                            data-date="July 5, 2026"
+                            data-banner="shopify_woocommerce_seo.png"
+                            data-desc="Rank your e-commerce product pages on Shopify or WooCommerce. Use this practical 11-step on-page SEO checklist to drive traffic and scale sales."
+                            data-checklist="true">
+                            
+                            <p>If your product pages aren't ranking, you're leaving money on the table. Most e-commerce stores treat product pages as an afterthought — thin descriptions, duplicate content, missing alt text. Here's a practical checklist to fix that, whether you're on Shopify or WooCommerce.</p>
+
+                            <!-- Diagnostic Dashboard -->
+                            <div class="seo-dashboard">
+                                <div class="progress-bar-container">
+                                    <div class="progress-info">
+                                        <span>CHECKLIST OPTIMIZATION STAGE</span>
+                                        <span id="tracker-ratio">0/11 COMPLETED</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill" id="tracker-bar"></div>
+                                    </div>
+                                </div>
+
+                                <div class="checklist-group">
+                                    <div class="checklist-item" data-target="step-1">
+                                        <div class="checklist-checkbox-wrapper">
+                                            <input type="checkbox" class="checklist-checkbox" id="check-1">
+                                        </div>
+                                        <div class="checklist-text">
+                                            <div class="checklist-item-title">1. Optimize Your Title Tag</div>
+                                            <p style="font-size: 0.85rem; margin: 0; color: var(--text-secondary);">Include primary keyword, product name, and differentiator (brand, size) under 60 characters.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="checklist-item" data-target="step-2">
+                                        <div class="checklist-checkbox-wrapper">
+                                            <input type="checkbox" class="checklist-checkbox" id="check-2">
+                                        </div>
+                                        <div class="checklist-text">
+                                            <div class="checklist-item-title">2. Write a Unique Meta Description</div>
+                                            <p style="font-size: 0.85rem; margin: 0; color: var(--text-secondary);">Write a unique 150-160 character summary with your keyword and a compelling hook to click.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="checklist-item" data-target="step-3">
+                                        <div class="checklist-checkbox-wrapper">
+                                            <input type="checkbox" class="checklist-checkbox" id="check-3">
+                                        </div>
+                                        <div class="checklist-text">
+                                            <div class="checklist-item-title">3. Use SEO-Friendly URLs</div>
+                                            <p style="font-size: 0.85rem; margin: 0; color: var(--text-secondary);">Keep URLs short, readable, and keyword-rich. Avoid auto-generated strings of numbers.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="checklist-item" data-target="step-4">
+                                        <div class="checklist-checkbox-wrapper">
+                                            <input type="checkbox" class="checklist-checkbox" id="check-4">
+                                        </div>
+                                        <div class="checklist-text">
+                                            <div class="checklist-item-title">4. Structure Headings Properly</div>
+                                            <p style="font-size: 0.85rem; margin: 0; color: var(--text-secondary);">Use exactly one H1 for your product title. Structure content details with H2/H3 elements.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="checklist-item" data-target="step-5">
+                                        <div class="checklist-checkbox-wrapper">
+                                            <input type="checkbox" class="checklist-checkbox" id="check-5">
+                                        </div>
+                                        <div class="checklist-text">
+                                            <div class="checklist-item-title">5. Write Original Product Descriptions</div>
+                                            <p style="font-size: 0.85rem; margin: 0; color: var(--text-secondary);">Avoid manufacturer boilerplate. Write 150-300 words of unique, helpful features and styling notes.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="checklist-item" data-target="step-6">
+                                        <div class="checklist-checkbox-wrapper">
+                                            <input type="checkbox" class="checklist-checkbox" id="check-6">
+                                        </div>
+                                        <div class="checklist-text">
+                                            <div class="checklist-item-title">6. Optimize Images</div>
+                                            <p style="font-size: 0.85rem; margin: 0; color: var(--text-secondary);">Compress images, use descriptive filenames, and add search-relevant image Alt text.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="checklist-item" data-target="step-7">
+                                        <div class="checklist-checkbox-wrapper">
+                                            <input type="checkbox" class="checklist-checkbox" id="check-7">
+                                        </div>
+                                        <div class="checklist-text">
+                                            <div class="checklist-item-title">7. Add Schema Markup (Structured Data)</div>
+                                            <p style="font-size: 0.85rem; margin: 0; color: var(--text-secondary);">Implement product schema to trigger rich snippets (star ratings, price, stock) in search results.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="checklist-item" data-target="step-8">
+                                        <div class="checklist-checkbox-wrapper">
+                                            <input type="checkbox" class="checklist-checkbox" id="check-8">
+                                        </div>
+                                        <div class="checklist-text">
+                                            <div class="checklist-item-title">8. Internal Linking</div>
+                                            <p style="font-size: 0.85rem; margin: 0; color: var(--text-secondary);">Link to related items, collection pages, or blogs to distribute link equity and increase AOV.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="checklist-item" data-target="step-9">
+                                        <div class="checklist-checkbox-wrapper">
+                                            <input type="checkbox" class="checklist-checkbox" id="check-9">
+                                        </div>
+                                        <div class="checklist-text">
+                                            <div class="checklist-item-title">9. Mobile Optimization</div>
+                                            <p style="font-size: 0.85rem; margin: 0; color: var(--text-secondary);">Ensure lightning-fast loads, large touch targets, and zoom-free readable text layout on mobile screens.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="checklist-item" data-target="step-10">
+                                        <div class="checklist-checkbox-wrapper">
+                                            <input type="checkbox" class="checklist-checkbox" id="check-10">
+                                        </div>
+                                        <div class="checklist-text">
+                                            <div class="checklist-item-title">10. Page Speed</div>
+                                            <p style="font-size: 0.85rem; margin: 0; color: var(--text-secondary);">Compress heavy images, minimize redundant web plugins/scripts, and use lightweight themes.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="checklist-item" data-target="step-11">
+                                        <div class="checklist-checkbox-wrapper">
+                                            <input type="checkbox" class="checklist-checkbox" id="check-11">
+                                        </div>
+                                        <div class="checklist-text">
+                                            <div class="checklist-item-title">11. Reviews and User-Generated Content</div>
+                                            <p style="font-size: 0.85rem; margin: 0; color: var(--text-secondary);">Integrate customer reviews to automatically feed Google fresh, keyword-rich UGC.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Detailed Content Sections -->
+                            <div id="step-1">
+                                <h2>1. Optimize Your Title Tag</h2>
+                                <p>Your title tag should include your primary keyword, product name, and a differentiator (brand, size, material). Keep it under 60 characters so it doesn't get cut off in search results. Avoid stuffing multiple keywords — pick one and make it natural.</p>
+                                <div class="seo-example-block">
+                                    <div class="seo-example-label">Example Title Tag Structure</div>
+                                    <div class="seo-example-content">"Men's Merino Wool Hiking Socks | Breathable & Durable – BrandName"</div>
+                                </div>
+                            </div>
+
+                            <div id="step-2">
+                                <h2>2. Write a Unique Meta Description</h2>
+                                <p>Never use the manufacturer's default description. Write a unique 150–160 character summary that includes your keyword and a reason to click — free shipping, a discount, or a key benefit.</p>
+                                <p>By personalizing your meta descriptions, you distinguish your site from other retailers selling the exact same inventory, leading to higher Click-Through Rates (CTR) on Search Engine Results Pages (SERPs).</p>
+                            </div>
+
+                            <div id="step-3">
+                                <h2>3. Use SEO-Friendly URLs</h2>
+                                <p>Keep URLs short, readable, and keyword-rich. Avoid auto-generated strings full of numbers or parameters.</p>
+                                <div class="seo-example-block">
+                                    <div class="seo-example-label">URL Slug Evaluation</div>
+                                    <div class="seo-example-content">
+                                        <span class="seo-good">GOOD:</span> /mens-hiking-socks <br>
+                                        <span class="seo-bad">BAD:</span> /product-id-4829xk?ref=collection
+                                    </div>
+                                </div>
+                                <p>Both Shopify and WooCommerce let you edit the URL slug manually — always do this before publishing.</p>
+                            </div>
+
+                            <div id="step-4">
+                                <h2>4. Structure Headings Properly</h2>
+                                <p>Use one H1 per page (usually your product title) and H2/H3 tags for sections like "Features," "Materials," or "How to Use." This helps search engines understand page structure and improves readability for shoppers.</p>
+                            </div>
+
+                            <div id="step-5">
+                                <h2>5. Write Original, Detailed Product Descriptions</h2>
+                                <p>Duplicate manufacturer descriptions hurt rankings badly. Write at least 150–300 words of unique content per product covering:</p>
+                                <ul>
+                                    <li>What the product is and who it's for</li>
+                                    <li>Key features and benefits (not just technical specifications)</li>
+                                    <li>Use cases or styling suggestions</li>
+                                </ul>
+                                <p>Answering common customer questions directly in the description can also help you rank for long-tail, conversational search queries.</p>
+                            </div>
+
+                            <div id="step-6">
+                                <h2>6. Optimize Images</h2>
+                                <p>Images represent the heaviest resource loads on a product page. Optimize them using the following rules:</p>
+                                <ul>
+                                    <li>Compress images to keep load times fast (use web-optimized formats like WebP or AVIF).</li>
+                                    <li>Use descriptive file names (e.g., <code>mens-merino-wool-socks.jpg</code>, not <code>IMG_1023.jpg</code>).</li>
+                                    <li>Add keyword-relevant alt text for every image — this also helps with accessibility and image search traffic.</li>
+                                </ul>
+                            </div>
+
+                            <div id="step-7">
+                                <h2>7. Add Schema Markup (Structured Data)</h2>
+                                <p>Product schema helps your listings show rich snippets — star ratings, price, and availability — directly in search results. Shopify themes often include this by default; for WooCommerce, plugins like Rank Math or Yoast SEO can add it automatically. Verify it's working using Google's Rich Results Test.</p>
+                            </div>
+
+                            <div id="step-8">
+                                <h2>8. Internal Linking</h2>
+                                <p>Link to related products, collections, or blog content from each product page. This spreads link equity across your site and helps customers discover more items, boosting average order value.</p>
+                            </div>
+
+                            <div id="step-9">
+                                <h2>9. Mobile Optimization</h2>
+                                <p>Most e-commerce traffic is mobile. Make sure images load fast, buttons are tappable, and text doesn't require zooming. Google's mobile-first indexing means your mobile experience directly impacts rankings.</p>
+                            </div>
+
+                            <div id="step-10">
+                                <h2>10. Page Speed</h2>
+                                <p>Slow product pages hurt both rankings and conversions. Compress images, limit unnecessary apps/plugins, and use a lightweight theme. Tools like PageSpeed Insights or GTmetrix can flag specific issues to fix.</p>
+                            </div>
+
+                            <div id="step-11">
+                                <h2>11. Reviews and User-Generated Content</h2>
+                                <p>Product reviews add fresh, keyword-rich content automatically and boost trust signals. They also often trigger star ratings in search results, improving click-through rates.</p>
+                            </div>
+
+                            <h2>Final Thoughts</h2>
+                            <p>On-page SEO for product pages isn't a one-time task — it's ongoing. Run this checklist across your top-selling products first, since that's where SEO improvements will move revenue fastest. Once those are optimized, work through the rest of your catalog systematically.</p>
+                            <p>A well-optimized product page doesn't just rank better — it converts better too, because clarity and trust signals help both search engines and shoppers make decisions.</p>
+                        </article>
+
+                        <!-- Statically Inlined Article 2: Performance Marketing Kerala -->
+                        <article id="art-performance-marketing-kerala" class="blog-article-content" style="display: none;"
+                            data-title="Why Performance Marketing is the Future of E-commerce Growth in Kerala"
+                            data-meta="Market Insights"
+                            data-readtime="5 min read"
+                            data-date="July 5, 2026"
+                            data-banner="thrissur_ecommerce.png"
+                            data-desc="Understand why performance marketing is the future of e-commerce scale and business growth in Kerala. Read data-driven growth strategies by Libin TB.">
+                            
+                            <p>Kerala's e-commerce landscape is changing fast. With rising smartphone penetration, high literacy rates, and a population that is increasingly comfortable shopping online, the state has become a fertile ground for digital retail. But as competition grows, traditional advertising methods are losing their edge. Businesses are shifting toward performance marketing, a data-driven approach that ties every rupee spent to a measurable outcome. This shift is not a passing trend; it is the future of e-commerce growth in Kerala.</p>
+
+                            <h2>What Makes Performance Marketing Different</h2>
+                            <p>Unlike traditional marketing, where brands pay for impressions or airtime regardless of results, performance marketing charges advertisers only when a specific action happens, such as a click, a lead, or a sale. This model aligns marketing spend directly with business outcomes. For Kerala's growing base of small and medium e-commerce businesses, this means every marketing rupee works harder and smarter.</p>
+                            <p>Channels like Google Ads, Meta Ads, affiliate marketing, and influencer partnerships all fall under this umbrella. Each can be tracked, tested, and optimized in real time, giving businesses the flexibility to pivot quickly when something isn't working.</p>
+
+                            <h2>Why Kerala is Ready for This Shift</h2>
+                            <p>Kerala has one of the highest internet penetration rates in India, and its consumers are known for being research-driven before making a purchase. This creates a unique opportunity: performance marketing thrives on data and behavioral targeting, and Kerala's digitally savvy population generates exactly the kind of signals that make these campaigns effective.</p>
+                            <p>Additionally, Kerala's diaspora, with strong connections to the Gulf and other regions, adds another layer of opportunity. Performance marketing allows brands to target these audiences precisely, whether they are shopping for family back home or planning purchases during festival seasons like Onam and Vishu.</p>
+
+                            <h2>Measurable ROI Builds Trust</h2>
+                            <p>One of the biggest advantages of performance marketing is transparency. Business owners can see exactly how many people clicked an ad, how many completed a purchase, and what their return on ad spend looks like. This transparency is especially valuable for Kerala's many family-run and first-generation e-commerce businesses, who often operate on tight budgets and need every campaign to justify itself.</p>
+                            <p>This is why more brands across Kochi, Kozhikode, and Thiruvananthapuram are actively searching for experienced growth partners to help them navigate this shift. Working with a skilled specialist ensures campaigns are not just running, but actually converting.</p>
+
+                            <h2>The Role of Local Expertise</h2>
+                            <p>While the tools of performance marketing are global, execution needs a local touch. Understanding regional festivals, language preferences, and shopping behavior in Malayalam-speaking markets makes a real difference in campaign performance. This is precisely why businesses looking to scale are prioritizing marketers who understand both the platforms and the regional consumer behavior.</p>
+                            <p>A marketer with deep local knowledge can craft messaging that resonates authentically, time campaigns around regional events, and build audience segments that reflect Kerala's diverse consumer base, from urban millennials to Gulf-based NRIs.</p>
+
+                            <h2>Looking Ahead</h2>
+                            <p>As Kerala's e-commerce sector matures, the businesses that will win are the ones treating marketing as a measurable investment rather than a guessing game. Performance marketing offers exactly that: accountability, agility, and scalability.</p>
+                            <p>For any e-commerce brand serious about growth in this state, partnering with a knowledgeable digital marketing professional isn't just a nice-to-have anymore, it's becoming a competitive necessity. Those who embrace this data-driven approach today will be the ones setting the pace for Kerala's e-commerce future tomorrow.</p>
+                            <p>Performance marketing isn't just changing how Kerala's businesses advertise. It's changing how they grow.</p>
+                        </article>
+
+                        <!-- Statically Inlined Article 3: Dominate Kerala -->
+                        <article id="art-dominate-kerala-ecommerce" class="blog-article-content" style="display: none;"
+                            data-title="How to Dominate Kerala's E-commerce Market in 2026"
+                            data-meta="E-commerce"
+                            data-readtime="8 min read"
+                            data-date="July 6, 2026"
+                            data-banner="thrissur_ecommerce.png"
+                            data-desc="Learn how to build, position, and dominate Kerala's e-commerce market using hyper-local marketing, localized payments, and native customer trust factors.">
+                            
+                            <p>Kerala's e-commerce ecosystem is expanding rapidly. With consumers demanding faster deliveries and hyper-personalized experiences, dominating this unique regional market in 2026 requires more than just launching a store. You need localized growth models, strong brand positioning, and optimized digital funnels.</p>
+                            
+                            <h2>1. Hyper-Local Logistics & Quick Commerce</h2>
+                            <p>E-commerce is no longer just about standard shipping. In 2026, quick-commerce and localized fulfillment centers are setting the standard. By positioning inventories closer to major cities like Thrissur, Kochi, and Calicut, you can reduce delivery times to under 24 hours, giving your brand a massive competitive edge.</p>
+                            
+                            <h2>2. Native Language & Cultural Personalization</h2>
+                            <p>Building trust starts with communication. Tailoring marketing campaigns, landing page copy, and customer support in Malayalam makes your brand accessible and authentic to wider audiences. Native storytelling, especially during major shopping seasons like Onam, Eid, and Christmas, dramatically increases conversion rates.</p>
+                            
+                            <h2>3. Leveraging Local Digital Partnerships</h2>
+                            <p>Collaborating with local influencers, regional content creators, and local payment methods is key to establishing brand credibility. Ensure your checkout experience integrates UPI, local banking portals, and flexible options like Cash on Delivery (COD) to cater to all demographics across urban and rural sectors of Kerala.</p>
+                            
+                            <h2>The Path Forward</h2>
+                            <p>As competition intensifies, generic marketing strategies won't suffice. Success lies in focusing on localized user experiences, highly optimized conversion funnels, and data-driven Performance Marketing campaigns designed specifically for the Kerala market.</p>
+                        </article>
+
+                        <!-- Statically Inlined Article 4: Meta vs Google Ads -->
+                        <article id="art-meta-vs-google-ads" class="blog-article-content" style="display: none;"
+                            data-title="Meta Ads vs. Google Ads: Which Drives Better ROI for Your Business?"
+                            data-meta="Strategy"
+                            data-readtime="6 min read"
+                            data-date="July 6, 2026"
+                            data-banner="saas_vs_nocode.png"
+                            data-desc="A comprehensive head-to-head comparison of Meta Ads and Google Ads to help e-commerce brands allocate ad spend effectively and maximize ROAS.">
+                            
+                            <p>One of the most common questions e-commerce business owners ask is: <em>Where should I invest my advertising budget?</em> The answer isn't always simple. Both Meta Ads (Facebook & Instagram) and Google Ads offer incredible reach, but they target users at different stages of the buying journey. Understanding how they work is critical to maximizing your Return on Ad Spend (ROAS).</p>
+                            
+                            <h2>Meta Ads: Demand Generation</h2>
+                            <p>Meta Ads excels at visual discovery and audience segmentation. It targets users based on interests, behaviors, demographics, and lookalike modeling. It's the ultimate tool for introducing new products, building brand awareness, and generating demand where it didn't previously exist.</p>
+                            <p>If you have a highly visual product, such as fashion, cosmetics, or unique home decor, Meta Ads is your primary growth engine. It lets you display high-quality video and image creatives that trigger impulse purchases directly in user feeds.</p>
+                            
+                            <h2>Google Ads: Demand Capture</h2>
+                            <p>Google Ads, particularly Search and Shopping campaigns, targets users with high intent. When someone searches for "best running shoes" or "buy organic spices online," they are actively looking to buy. Google Ads doesn't generate demand; it captures existing search interest.</p>
+                            <p>This high intent means higher conversion rates. If your products have steady search volume or solve immediate customer problems, Search and Shopping campaigns should be the foundation of your search engine marketing.</p>
+                            
+                            <h2>The Multi-Channel Strategy</h2>
+                            <p>The most successful brands don't choose one over the other. Instead, they use a combined approach:</p>
+                            <ul>
+                                <li>Use <strong>Meta Ads</strong> to find new prospects, introduce your products, and build a retargeting audience.</li>
+                                <li>Use <strong>Google Ads</strong> to capture search intent and make sure you show up when customers search for your brand or product categories.</li>
+                                <li>Use <strong>Google Performance Max</strong> and Meta Advantage+ campaigns in tandem to cover the entire customer journey from discovery to checkout.</li>
+                            </ul>
+                            
+                            <h2>Measuring ROI</h2>
+                            <p>To measure the true impact, implement advanced tracking systems like GA4, Conversions API, and custom multi-touch attribution models. Knowing exactly where your traffic comes from ensures your budget is always directed to the highest-performing channel.</p>
+                        </article>
+                    </div>
+
+                    <div class="back-link-wrapper">
+                        <a href="blog.html" class="back-link">
+                            <i class="fa-solid fa-arrow-left"></i> Back to Marketing Journal
+                        </a>
+                    </div>
+                </main>
+
+                <!-- Shared Sidebar widgets -->
+                <aside class="sidebar-layout">
+                    <div class="sidebar-widgets">
+                        <!-- Profile Widget -->
+                        <div class="sidebar-widget author-box">
+                            <div class="author-avatar">👨‍💻</div>
+                            <h3 class="author-name">Libin TB</h3>
+                            <p class="author-bio">E-Commerce Performance Marketer based in Kerala. Scaling brands using analytics, conversion rate optimization, and SEO.</p>
+                        </div>
+
+                        <!-- Call to Action Widget -->
+                        <div class="sidebar-widget cta-widget" style="background-color: #111;">
+                            <h3 class="sidebar-widget-title">// LEVEL_UP_GROWTH</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 1.5rem; color: var(--text-secondary);">Want to scale your WooCommerce or Shopify sales without burning cash?</p>
+                            <a href="index.html#contact" class="btn btn-primary" style="display: block; text-align: center; font-size: 0.9rem; padding: 0.8rem 1rem;">Book Strategy Call</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Navigation (Horizontal Matrix) -->
+    <section class="footer-nav animate-in">
+        <div class="footer-nav-container">
+            <ul class="footer-links">
+                <li><a href="index.html" data-glow="true">Home</a></li>
+                <li><a href="index.html#about" data-glow="true">About</a></li>
+                <li><a href="index.html#services" data-glow="true">Services</a></li>
+                <li><a href="portfolio.html" data-glow="true">Portfolio</a></li>
+                <li><a href="blog.html" data-glow="true">Blog</a></li>
+                <li><a href="index.html#contact" data-glow="true">Contact</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: #0d0d0d; border-top: 2px solid #333; padding: 2rem 0; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+            <div class="nav-logo" style="margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                <img src="logo.png" alt="Libin Marketing Logo" class="logo-img">
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">© 2026 Libin TB. Performance Marketing & E-commerce Specialist.</p>
+            <div style="margin-top: 0.5rem;">
+                <a href="privacy.html" style="color: var(--text-secondary); font-size: 0.8rem; text-decoration: none;"
+                    onmouseover="this.style.color='var(--accent-lime)';"
+                    onmouseout="this.style.color='var(--text-secondary)';" data-glow="true">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/918075099644" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 32 32" class="wa-icon" fill="currentColor">
+            <path
+                d="M16 0C7.16 0 0 7.16 0 16c0 2.82.73 5.57 2.13 8.01L0 32l8.22-2.15c2.4 1.34 5.09 2.05 7.78 2.05 8.84 0 16-7.16 16-16S24.84 0 16 0zm0 29.33c-2.4 0-4.75-.62-6.83-1.8l-.49-.29-5.1 1.33 1.36-4.96-.32-.51c-1.28-2.05-1.96-4.42-1.96-6.84 0-7.35 5.98-13.33 13.33-13.33s13.33 5.98 13.33 13.33c0 7.35-5.98 13.34-13.33 13.34zm7.33-10.03c-.4-.2-2.37-1.17-2.74-1.31-.37-.13-.64-.2-.91.2-.27.4-.95 1.17-1.16 1.4-.21.24-.42.27-.82.07-.4-.2-1.7-.63-3.23-2-1.19-1.06-2-2.37-2.23-2.77-.24-.4-.02-.62.17-.82.18-.18.41-.47.61-.7.21-.24.28-.4.41-.67.14-.27.07-.5-.03-.7-.1-.2-.91-2.2-1.25-3.01-.33-.78-.66-.67-.91-.68-.23-.01-.49-.01-.76-.01-.27 0-.7.1-1.07.5-.37.4-1.4 1.37-1.4 3.33s1.43 3.86 1.63 4.13c.2.27 2.81 4.29 6.8 6.01.95.41 1.69.65 2.27.84 1 .32 1.9.27 2.62.16.81-.12 2.37-.97 2.71-1.9.34-.94.34-1.74.24-1.9-.11-.17-.38-.27-.78-.47z" />
+        </svg>
+    </a>
+
+    <!-- Core Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Logic
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Routing Logic based on Query String (?post=slug)
+            const urlParams = new URLSearchParams(window.location.search);
+            const postSlug = urlParams.get('post');
+
+            const hubView = document.getElementById('blog-hub-view');
+            const postView = document.getElementById('blog-post-view');
+
+            // Hide all statically inlined articles by default
+            const articleElements = document.querySelectorAll('.blog-article-content');
+            articleElements.forEach(el => el.style.display = 'none');
+
+            // Find matching article element in DOM
+            const activeArticle = postSlug ? document.getElementById('art-' + postSlug) : null;
+
+            if (activeArticle) {
+                // Show Reader View & active article content
+                hubView.style.display = 'none';
+                postView.style.display = 'block';
+                activeArticle.style.display = 'block';
+
+                // Retrieve post metadata from attributes
+                const title = activeArticle.getAttribute('data-title');
+                const meta = activeArticle.getAttribute('data-meta');
+                const readTime = activeArticle.getAttribute('data-readtime');
+                const date = activeArticle.getAttribute('data-date');
+                const banner = activeArticle.getAttribute('data-banner');
+                const desc = activeArticle.getAttribute('data-desc');
+
+                // Update Page Title & Meta Tags
+                document.getElementById('page-title').textContent = `${title} | Libin TB`;
+                document.getElementById('meta-desc').setAttribute('content', desc);
+
+                // Update header elements
+                document.getElementById('post-title-root').textContent = title;
+                document.getElementById('post-banner-root').setAttribute('src', banner);
+                document.getElementById('post-banner-root').setAttribute('alt', title);
+
+                document.getElementById('post-meta-root').innerHTML = `
+                    <span>${meta}</span>
+                    <span>•</span>
+                    <span>${readTime}</span>
+                    <span>•</span>
+                    <span>${date}</span>
+                `;
+
+                // Initialize interactive checklist if configured
+                if (activeArticle.getAttribute('data-checklist') === 'true') {
+                    initChecklist();
+                }
+            } else {
+                // Show Hub Listing View
+                postView.style.display = 'none';
+                hubView.style.display = 'block';
+                
+                // Set default page title & meta
+                document.getElementById('page-title').textContent = 'Marketing Journal | Libin TB';
+                document.getElementById('meta-desc').setAttribute('content', 'Read insights, digital marketing strategies, performance marketing playbooks, and SEO guides by Libin TB.');
+
+                // Render dynamic listing cards from the statically inlined <article> tags!
+                const gridRoot = document.getElementById('blog-grid-root');
+                if (gridRoot) {
+                    gridRoot.innerHTML = '';
+                    articleElements.forEach(art => {
+                        const slug = art.id.replace('art-', '');
+                        const title = art.getAttribute('data-title');
+                        const meta = art.getAttribute('data-meta');
+                        const readTime = art.getAttribute('data-readtime');
+                        const banner = art.getAttribute('data-banner');
+                        const desc = art.getAttribute('data-desc');
+
+                        const card = document.createElement('article');
+                        card.className = 'blog-card reveal-up';
+                        card.innerHTML = `
+                            <div class="blog-image-placeholder">
+                                <img src="${banner}" alt="${title}">
+                            </div>
+                            <div class="blog-card-content">
+                                <div class="blog-card-meta">${meta} • ${readTime}</div>
+                                <h3 class="blog-card-title"><a href="blog.html?post=${slug}">${title}</a></h3>
+                                <p class="blog-card-desc">${desc}</p>
+                                <a href="blog.html?post=${slug}" class="blog-readmore">Read Article <span>→</span></a>
+                            </div>
+                        `;
+                        gridRoot.appendChild(card);
+                    });
+                }
+            }
+
+            // Apply scroll animation reveal for cards
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+            // Apply text glow effects
+            applyGlowEffects();
+
+            function initChecklist() {
+                const checklistItems = document.querySelectorAll('.checklist-item');
+                const checkboxes = document.querySelectorAll('.checklist-checkbox');
+                const trackerRatio = document.getElementById('tracker-ratio');
+                const trackerBar = document.getElementById('tracker-bar');
+                
+                if (!trackerRatio || !trackerBar) return;
+
+                const totalSteps = checklistItems.length;
+
+                // Load saved checklist state
+                const savedState = JSON.parse(localStorage.getItem('seo_checklist_state') || '{}');
+
+                function updateProgress() {
+                    let checkedCount = 0;
+                    
+                    checkboxes.forEach((cb) => {
+                        const item = cb.closest('.checklist-item');
+                        const stepId = cb.id;
+                        
+                        if (savedState[stepId] === true) {
+                            cb.checked = true;
+                            item.classList.add('checked');
+                            checkedCount++;
+                        } else {
+                            cb.checked = false;
+                            item.classList.remove('checked');
+                        }
+                    });
+
+                    const percentage = Math.round((checkedCount / totalSteps) * 100);
+                    trackerRatio.textContent = `${checkedCount}/${totalSteps} COMPLETED`;
+                    trackerBar.style.width = `${percentage}%`;
+                }
+
+                // Bind checklist click handlers
+                checklistItems.forEach(item => {
+                    const cb = item.querySelector('.checklist-checkbox');
+                    
+                    item.addEventListener('click', (e) => {
+                        if (e.target !== cb) {
+                            cb.checked = !cb.checked;
+                            cb.dispatchEvent(new Event('change'));
+                        }
+                    });
+
+                    cb.addEventListener('change', () => {
+                        const stepId = cb.id;
+                        savedState[stepId] = cb.checked;
+                        localStorage.setItem('seo_checklist_state', JSON.stringify(savedState));
+                        updateProgress();
+                        
+                        const parent = cb.closest('.checklist-item');
+                        if (cb.checked) {
+                            parent.classList.add('checked');
+                        } else {
+                            parent.classList.remove('checked');
+                        }
+                    });
+
+                    // Scroll helper on double click
+                    item.addEventListener('dblclick', () => {
+                        const targetId = item.getAttribute('data-target');
+                        const el = document.getElementById(targetId);
+                        if (el) {
+                            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    });
+                });
+
+                // Initial progress calculation
+                updateProgress();
+            }
+
+            function applyGlowEffects() {
+                const glowElements = document.querySelectorAll(
+                    '.blog-post-title, .sidebar-widget-title, .author-name, .nav-links a, .btn, .footer-links a, .blog-card-title a'
+                );
+                
+                glowElements.forEach(el => {
+                    // Skip if already split
+                    if (el.querySelector('.glow-word')) return;
+
+                    const text = el.textContent.trim();
+                    const words = text.split(/\s+/);
+                    el.innerHTML = '';
+                    words.forEach((word, index) => {
+                        const span = document.createElement('span');
+                        span.textContent = word;
+                        span.classList.add('glow-word');
+                        span.style.setProperty('--word-index', index);
+                        el.appendChild(span);
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

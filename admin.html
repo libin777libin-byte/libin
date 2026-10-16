@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS Admin | Libin TB</title>
+  <!-- Favicon and Brand Icons for Google / Browsers -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #1a1a1a;
+      --border: #2a2a2a;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --lime: #b8ff57;
+      --blue: #00d4ff;
+      --pink: #ff4da6;
+      --red: #ff4444;
+      --font: 'Inter', sans-serif;
+      --mono: 'Space Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); min-height: 100vh; }
+
+    /* ──── AUTH OVERLAY ──── */
+    #auth-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.92); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center; z-index: 9999;
+    }
+    #auth-overlay.hidden { display: none; }
+    .auth-box {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 2.5rem; width: 100%; max-width: 420px; animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    .auth-box h2 { font-family: var(--mono); color: var(--lime); margin-bottom: 0.5rem; }
+    .auth-box p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .auth-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .auth-tab {
+      flex:1; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px;
+      background: transparent; color: var(--text-muted); cursor: pointer; font-family: var(--mono); font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+    .auth-tab.active { border-color: var(--lime); color: var(--lime); background: rgba(184,255,87,0.07); }
+    .form-field { margin-bottom: 1rem; }
+    .form-field label { display: block; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; font-family: var(--mono); }
+    .form-field input {
+      width: 100%; padding: 0.75rem 1rem; background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 6px; color: var(--text); font-family: var(--font); font-size: 0.95rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-field input:focus { border-color: var(--blue); }
+    .btn-primary-auth {
+      width: 100%; padding: 0.8rem; background: var(--lime); color: #000; border: none;
+      border-radius: 6px; font-family: var(--mono); font-weight: 700; cursor: pointer; font-size: 0.9rem;
+      transition: opacity 0.2s; margin-top: 0.5rem;
+    }
+    .btn-primary-auth:hover { opacity: 0.88; }
+    .btn-google {
+      width: 100%; padding: 0.8rem; background: transparent; color: var(--text); border: 1px solid var(--border);
+      border-radius: 6px; font-family: var(--font); cursor: pointer; font-size: 0.9rem; margin-top: 0.75rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem; transition: border-color 0.2s;
+    }
+    .btn-google:hover { border-color: var(--blue); color: var(--blue); }
+    .auth-divider { text-align: center; color: var(--text-muted); font-size: 0.8rem; margin: 0.75rem 0; }
+    .auth-error { color: var(--red); font-size: 0.85rem; margin-top: 0.5rem; min-height: 1.2rem; }
+
+    /* ──── LAYOUT ──── */
+    .cms-layout { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
+    .sidebar {
+      background: var(--surface); border-right: 1px solid var(--border);
+      padding: 1.5rem 0; display: flex; flex-direction: column;
+    }
+    .sidebar-logo { padding: 0 1.5rem 1.5rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+    .sidebar-logo a { text-decoration: none; }
+    .sidebar-logo span { font-family: var(--mono); color: var(--lime); font-size: 1.2rem; font-weight: 700; }
+    .sidebar-logo small { display: block; color: var(--text-muted); font-size: 0.7rem; margin-top: 0.2rem; }
+    .nav-section-label { padding: 0.5rem 1.5rem; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); font-family: var(--mono); }
+    .sidebar-nav a {
+      display: flex; align-items: center; gap: 0.7rem; padding: 0.65rem 1.5rem;
+      color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: all 0.15s;
+    }
+    .sidebar-nav a:hover, .sidebar-nav a.active { color: var(--text); background: var(--surface2); border-left: 2px solid var(--lime); }
+    .sidebar-nav a .icon { width: 18px; text-align: center; }
+    .sidebar-bottom { margin-top: auto; padding: 1rem 1.5rem; border-top: 1px solid var(--border); }
+    .user-info { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.75rem; }
+    .user-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--lime), var(--blue)); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: #000; }
+    .user-email { font-size: 0.8rem; color: var(--text-muted); word-break: break-all; }
+    .btn-signout { width: 100%; padding: 0.5rem; background: transparent; border: 1px solid var(--border); color: var(--text-muted); border-radius: 6px; cursor: pointer; font-size: 0.8rem; transition: all 0.2s; }
+    .btn-signout:hover { border-color: var(--red); color: var(--red); }
+
+    /* ──── MAIN CONTENT ──── */
+    .main-content { padding: 2rem; overflow-y: auto; }
+    .page { display: none; }
+    .page.active { display: block; }
+    .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
+    .page-title { font-family: var(--mono); font-size: 1.4rem; color: var(--text); }
+    .page-title span { color: var(--lime); }
+    .btn-action {
+      padding: 0.6rem 1.2rem; background: var(--lime); color: #000; border: none; border-radius: 6px;
+      font-family: var(--mono); font-weight: 700; cursor: pointer; font-size: 0.85rem; transition: opacity 0.2s;
+    }
+    .btn-action:hover { opacity: 0.88; }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 0.6rem 1.2rem; cursor: pointer; font-size: 0.85rem; transition: border-color 0.2s; }
+    .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+    .btn-danger { background: transparent; color: var(--red); border: 1px solid var(--red); border-radius: 6px; padding: 0.4rem 0.8rem; cursor: pointer; font-size: 0.8rem; transition: background 0.2s; }
+    .btn-danger:hover { background: rgba(255,68,68,0.1); }
+
+    /* ──── STATS CARDS ──── */
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+    .stat-card .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-family: var(--mono); margin-bottom: 0.5rem; }
+    .stat-card .value { font-size: 2rem; font-family: var(--mono); font-weight: 700; color: var(--lime); }
+
+    /* ──── TABLE ──── */
+    .table-wrapper { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; }
+    th { padding: 0.75rem 1rem; text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-family: var(--mono); border-bottom: 1px solid var(--border); background: var(--surface2); }
+    td { padding: 0.85rem 1rem; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .status-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.72rem; font-family: var(--mono); font-weight: 700; text-transform: uppercase; }
+    .status-published { background: rgba(184,255,87,0.15); color: var(--lime); }
+    .status-draft { background: rgba(136,136,136,0.15); color: var(--text-muted); }
+    .status-scheduled { background: rgba(0,212,255,0.15); color: var(--blue); }
+    .empty-state { text-align: center; padding: 3rem; color: var(--text-muted); }
+    .empty-state .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .empty-state p { font-size: 0.9rem; }
+
+    /* ──── POST EDITOR ──── */
+    .editor-grid { display: grid; grid-template-columns: 1fr 280px; gap: 1.5rem; }
+    .editor-main { display: flex; flex-direction: column; gap: 1rem; }
+    .editor-sidebar-panel { display: flex; flex-direction: column; gap: 1rem; }
+    .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+    .panel h3 { font-family: var(--mono); font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
+    .form-row { margin-bottom: 0.85rem; }
+    .form-row label { display: block; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.35rem; font-family: var(--mono); }
+    .form-row input, .form-row textarea, .form-row select {
+      width: 100%; padding: 0.65rem 0.85rem; background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 6px; color: var(--text); font-family: var(--font); font-size: 0.9rem; outline: none; resize: vertical;
+      transition: border-color 0.2s;
+    }
+    .form-row input:focus, .form-row textarea:focus, .form-row select:focus { border-color: var(--blue); }
+    .form-row textarea { min-height: 300px; }
+    .editor-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem; }
+
+    /* ──── MEDIA LIBRARY ──── */
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+    .media-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; cursor: pointer; transition: border-color 0.2s; }
+    .media-item:hover { border-color: var(--blue); }
+    .media-thumb { width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--surface); }
+    .media-name { padding: 0.5rem; font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .upload-zone {
+      border: 2px dashed var(--border); border-radius: 10px; padding: 2.5rem; text-align: center;
+      cursor: pointer; margin-bottom: 1.5rem; transition: border-color 0.2s;
+    }
+    .upload-zone:hover { border-color: var(--lime); }
+    .upload-zone .icon { font-size: 2rem; margin-bottom: 0.5rem; color: var(--text-muted); }
+    .upload-zone p { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* ──── TOAST ──── */
+    #toast {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; padding: 0.75rem 1.25rem; border-radius: 8px;
+      font-size: 0.9rem; font-family: var(--mono); z-index: 9999; opacity: 0; transform: translateY(10px);
+      transition: all 0.3s; pointer-events: none;
+    }
+    #toast.show { opacity: 1; transform: translateY(0); }
+    #toast.success { background: var(--lime); color: #000; }
+    #toast.error { background: var(--red); color: #fff; }
+
+    /* ──── RESPONSIVE ──── */
+    @media (max-width: 768px) {
+      .cms-layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .editor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ────────────────── AUTH OVERLAY ────────────────── -->
+<div id="auth-overlay">
+  <div class="auth-box">
+    <h2>// CMS Admin</h2>
+    <p>Sign in to manage your content.</p>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchAuthTab('signin')">Sign In</button>
+      <button class="auth-tab" onclick="switchAuthTab('signup')">Sign Up</button>
+    </div>
+
+    <!-- Sign In -->
+    <div id="tab-signin">
+      <div class="form-field"><label>Email</label><input type="email" id="signin-email" placeholder="you@example.com" autocomplete="email"></div>
+      <div class="form-field"><label>Password</label><input type="password" id="signin-password" placeholder="••••••••" autocomplete="current-password"></div>
+      <button class="btn-primary-auth" onclick="handleSignIn()">Sign In →</button>
+      <div class="auth-divider">— or —</div>
+      <button class="btn-google" onclick="cms.authSignInGoogle()">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Continue with Google
+      </button>
+      <div class="auth-error" id="signin-error"></div>
+    </div>
+
+    <!-- Sign Up -->
+    <div id="tab-signup" style="display:none;">
+      <div class="form-field"><label>Full Name</label><input type="text" id="signup-name" placeholder="Libin TB" autocomplete="name"></div>
+      <div class="form-field"><label>Email</label><input type="email" id="signup-email" placeholder="you@example.com" autocomplete="email"></div>
+      <div class="form-field"><label>Password</label><input type="password" id="signup-password" placeholder="••••••••" autocomplete="new-password"></div>
+      <button class="btn-primary-auth" onclick="handleSignUp()">Create Account →</button>
+      <div class="auth-divider">— or —</div>
+      <button class="btn-google" onclick="cms.authSignInGoogle()">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Continue with Google
+      </button>
+      <div class="auth-error" id="signup-error"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────── TOAST ────────────────── -->
+<div id="toast"></div>
+
+<!-- ────────────────── CMS LAYOUT ────────────────── -->
+<div class="cms-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html"><span>libin</span></a>
+      <small>CMS Dashboard</small>
+    </div>
+    <div class="nav-section-label">Content</div>
+    <nav class="sidebar-nav">
+      <a href="#" class="active" onclick="showPage('dashboard', this)"><span class="icon">📊</span> Dashboard</a>
+      <a href="#" onclick="showPage('posts', this)"><span class="icon">📝</span> Posts</a>
+      <a href="#" onclick="showPage('new-post', this)"><span class="icon">✏️</span> New Post</a>
+      <a href="#" onclick="showPage('media', this)"><span class="icon">🖼️</span> Media Library</a>
+    </nav>
+    <div class="nav-section-label">Leads</div>
+    <nav class="sidebar-nav">
+      <a href="#" onclick="showPage('leads', this)"><span class="icon">📬</span> My Leads</a>
+    </nav>
+    <div class="nav-section-label">Site</div>
+    <nav class="sidebar-nav">
+      <a href="index.html" target="_blank"><span class="icon">🌐</span> View Site</a>
+      <a href="blog.html" target="_blank"><span class="icon">📰</span> View Blog</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="user-info">
+        <div class="user-avatar" id="user-avatar-initials">?</div>
+        <div class="user-email" id="user-email-display">Loading...</div>
+      </div>
+      <button class="btn-signout" onclick="cms.authSignOut()">Sign Out</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Dashboard Page -->
+    <div class="page active" id="page-dashboard">
+      <div class="page-header">
+        <h1 class="page-title">// <span>Dashboard</span></h1>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><div class="label">Total Posts</div><div class="value" id="stat-posts">—</div></div>
+        <div class="stat-card"><div class="label">Published</div><div class="value" id="stat-published">—</div></div>
+        <div class="stat-card"><div class="label">Drafts</div><div class="value" id="stat-drafts">—</div></div>
+        <div class="stat-card"><div class="label">Leads</div><div class="value" id="stat-leads">—</div></div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Title</th><th>Status</th><th>Date</th><th></th></tr></thead>
+          <tbody id="dashboard-recent-posts">
+            <tr><td colspan="4" class="empty-state"><p>Loading recent posts...</p></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Posts Page -->
+    <div class="page" id="page-posts">
+      <div class="page-header">
+        <h1 class="page-title">// <span>Posts</span></h1>
+        <button class="btn-action" onclick="showPage('new-post', null)">+ New Post</button>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Title</th><th>Status</th><th>Type</th><th>Created</th><th>Actions</th></tr></thead>
+          <tbody id="posts-table-body">
+            <tr><td colspan="5" class="empty-state"><p>Loading...</p></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- New Post Page -->
+    <div class="page" id="page-new-post">
+      <div class="page-header">
+        <h1 class="page-title">// <span>New Post</span></h1>
+        <button class="btn-secondary" onclick="showPage('posts', null)">← Back</button>
+      </div>
+      <div class="editor-grid">
+        <div class="editor-main">
+          <div class="panel">
+            <div class="form-row"><label>Title</label><input type="text" id="post-title" placeholder="Enter post title..."></div>
+            <div class="form-row"><label>Slug (URL)</label><input type="text" id="post-slug" placeholder="my-post-url"></div>
+            <div class="form-row"><label>Content (HTML or plain text)</label><textarea id="post-content" placeholder="Write your content here..."></textarea></div>
+          </div>
+          <div class="editor-actions">
+            <button class="btn-action" onclick="handleSavePost('published')">🚀 Publish</button>
+            <button class="btn-secondary" onclick="handleSavePost('draft')">💾 Save Draft</button>
+          </div>
+          <div class="auth-error" id="post-error" style="margin-top:0.5rem;"></div>
+        </div>
+        <div class="editor-sidebar-panel">
+          <div class="panel">
+            <h3>Post Settings</h3>
+            <div class="form-row"><label>Type</label>
+              <select id="post-type"><option value="post">Post</option><option value="page">Page</option></select>
+            </div>
+            <div class="form-row"><label>Status</label>
+              <select id="post-status"><option value="draft">Draft</option><option value="published">Published</option></select>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Featured Image</h3>
+            <div class="form-row"><label>Image URL</label><input type="text" id="post-image-url" placeholder="https://..."></div>
+            <div class="form-row"><label>SEO Description</label><input type="text" id="post-seo-desc" placeholder="Brief description..."></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Media Library Page -->
+    <div class="page" id="page-media">
+      <div class="page-header">
+        <h1 class="page-title">// <span>Media Library</span></h1>
+      </div>
+      <div class="upload-zone" onclick="document.getElementById('media-file-input').click()">
+        <div class="icon">📁</div>
+        <p>Click to upload files (images, docs)</p>
+        <p style="font-size:0.75rem; margin-top:0.35rem; color:#555;">PNG, JPG, GIF, PDF, WebP supported</p>
+      </div>
+      <input type="file" id="media-file-input" style="display:none" accept="image/*,application/pdf" onchange="handleMediaUpload(this)">
+      <div class="media-grid" id="media-grid">
+        <div class="empty-state" style="grid-column:1/-1"><p>No media uploaded yet.</p></div>
+      </div>
+    </div>
+
+    <!-- Leads Page -->
+    <div class="page" id="page-leads">
+      <div class="page-header">
+        <h1 class="page-title">// <span>My Leads</span></h1>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Name</th><th>Email</th><th>Service</th><th>Message</th><th>Date</th></tr></thead>
+          <tbody id="leads-table-body">
+            <tr><td colspan="5" class="empty-state"><p>Loading leads...</p></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- InsForge SDK (ESM loaded dynamically inside wrapper) -->
+<script src="insforge-cms.js"></script>
+<script>
+// ─── UI Helpers ───
+function showToast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'show ' + type;
+  setTimeout(() => { t.className = ''; }, 3000);
+}
+
+function showPage(name, linkEl) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+  if (linkEl) linkEl.classList.add('active');
+  if (name === 'posts') loadPosts();
+  if (name === 'leads') loadLeads();
+  if (name === 'dashboard') loadDashboard();
+  if (name === 'media') loadMedia();
+}
+
+function switchAuthTab(tab) {
+  document.getElementById('tab-signin').style.display = tab === 'signin' ? 'block' : 'none';
+  document.getElementById('tab-signup').style.display = tab === 'signup' ? 'block' : 'none';
+  document.querySelectorAll('.auth-tab').forEach((btn, i) => {
+    btn.classList.toggle('active', (tab === 'signin' && i === 0) || (tab === 'signup' && i === 1));
+  });
+}
+
+function autoSlug(title) {
+  return title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+}
+document.getElementById('post-title').addEventListener('input', e => {
+  document.getElementById('post-slug').value = autoSlug(e.target.value);
+});
+
+// ─── Auth ───
+async function handleSignIn() {
+  const email = document.getElementById('signin-email').value.trim();
+  const password = document.getElementById('signin-password').value;
+  document.getElementById('signin-error').textContent = '';
+  const { data, error } = await cms.authSignIn(email, password);
+  if (error) { document.getElementById('signin-error').textContent = error.message || JSON.stringify(error); return; }
+  initDashboard();
+}
+
+async function handleSignUp() {
+  const name = document.getElementById('signup-name').value.trim();
+  const email = document.getElementById('signup-email').value.trim();
+  const password = document.getElementById('signup-password').value;
+  document.getElementById('signup-error').textContent = '';
+  const { data, error } = await cms.authSignUp(email, password, name);
+  if (error) { document.getElementById('signup-error').textContent = error.message || JSON.stringify(error); return; }
+  showToast('Account created! Check your email to verify.', 'success');
+  initDashboard();
+}
+
+async function initDashboard() {
+  const user = await cms.authCurrentUser();
+  if (!user) { document.getElementById('auth-overlay').classList.remove('hidden'); return; }
+  document.getElementById('auth-overlay').classList.add('hidden');
+  const initials = (user.name || user.email || '?').charAt(0).toUpperCase();
+  document.getElementById('user-avatar-initials').textContent = initials;
+  document.getElementById('user-email-display').textContent = user.email || '';
+  loadDashboard();
+}
+
+// ─── Dashboard ───
+async function loadDashboard() {
+  const [posts, leads] = await Promise.all([cms.fetchMyPosts(), cms.fetchMyLeads()]);
+  const published = posts.filter(p => p.status === 'published').length;
+  document.getElementById('stat-posts').textContent = posts.length;
+  document.getElementById('stat-published').textContent = published;
+  document.getElementById('stat-drafts').textContent = posts.length - published;
+  document.getElementById('stat-leads').textContent = leads.length;
+  const tbody = document.getElementById('dashboard-recent-posts');
+  if (!posts.length) { tbody.innerHTML = '<tr><td colspan="4" class="empty-state"><div class="icon">📝</div><p>No posts yet. Create your first one!</p></td></tr>'; return; }
+  tbody.innerHTML = posts.slice(0, 5).map(p => `
+    <tr>
+      <td>${p.title}</td>
+      <td><span class="status-badge status-${p.status}">${p.status}</span></td>
+      <td style="color:var(--text-muted);font-size:0.82rem">${p.created_at ? new Date(p.created_at).toLocaleDateString() : '—'}</td>
+      <td><button class="btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem" onclick="editPost('${p.id}')">Edit</button></td>
+    </tr>`).join('');
+}
+
+// ─── Posts ───
+async function loadPosts() {
+  const posts = await cms.fetchMyPosts();
+  const tbody = document.getElementById('posts-table-body');
+  if (!posts.length) { tbody.innerHTML = '<tr><td colspan="5" class="empty-state"><div class="icon">📝</div><p>No posts yet.</p></td></tr>'; return; }
+  tbody.innerHTML = posts.map(p => `
+    <tr>
+      <td><strong>${p.title}</strong><br><span style="color:var(--text-muted);font-size:0.78rem">${p.slug}</span></td>
+      <td><span class="status-badge status-${p.status}">${p.status}</span></td>
+      <td style="color:var(--text-muted);font-size:0.82rem">${p.post_type}</td>
+      <td style="color:var(--text-muted);font-size:0.82rem">${p.created_at ? new Date(p.created_at).toLocaleDateString() : '—'}</td>
+      <td style="display:flex;gap:0.5rem;align-items:center">
+        <button class="btn-secondary" style="padding:0.35rem 0.7rem;font-size:0.78rem" onclick="editPost('${p.id}')">Edit</button>
+        <button class="btn-danger" onclick="handleDeletePost('${p.id}')">Delete</button>
+      </td>
+    </tr>`).join('');
+}
+
+function editPost(id) {
+  // Simplified: just navigate to new-post form for now
+  showToast('Edit functionality: use the post ID ' + id, 'success');
+}
+
+async function handleDeletePost(id) {
+  if (!confirm('Delete this post permanently?')) return;
+  await cms.deletePost(id);
+  showToast('Post deleted.', 'success');
+  loadPosts();
+}
+
+async function handleSavePost(forceStatus) {
+  const title = document.getElementById('post-title').value.trim();
+  const slug = document.getElementById('post-slug').value.trim();
+  const content = document.getElementById('post-content').value.trim();
+  const status = forceStatus || document.getElementById('post-status').value;
+  const post_type = document.getElementById('post-type').value;
+  const imageUrl = document.getElementById('post-image-url').value.trim();
+  const seoDesc = document.getElementById('post-seo-desc').value.trim();
+  document.getElementById('post-error').textContent = '';
+  if (!title || !slug || !content) { document.getElementById('post-error').textContent = 'Title, slug, and content are required.'; return; }
+  const meta = { image: imageUrl, description: seoDesc };
+  const data = await cms.createPost({ title, slug, content, status, post_type, meta });
+  if (!data) { document.getElementById('post-error').textContent = 'Failed to save post. Check the console for details.'; return; }
+  showToast(status === 'published' ? '🚀 Post published!' : '💾 Draft saved!', 'success');
+  document.getElementById('post-title').value = '';
+  document.getElementById('post-slug').value = '';
+  document.getElementById('post-content').value = '';
+  showPage('posts', null);
+}
+
+// ─── Leads ───
+async function loadLeads() {
+  const leads = await cms.fetchMyLeads();
+  const tbody = document.getElementById('leads-table-body');
+  if (!leads.length) { tbody.innerHTML = '<tr><td colspan="5" class="empty-state"><div class="icon">📬</div><p>No leads yet.</p></td></tr>'; return; }
+  tbody.innerHTML = leads.map(l => `
+    <tr>
+      <td>${l.name || '—'}</td>
+      <td style="color:var(--text-muted)">${l.email || '—'}</td>
+      <td><span class="status-badge status-draft" style="background:rgba(0,212,255,0.1);color:var(--blue)">${l.service || '—'}</span></td>
+      <td style="color:var(--text-muted);font-size:0.85rem;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${l.message || '—'}</td>
+      <td style="color:var(--text-muted);font-size:0.8rem">${l.created_at ? new Date(l.created_at).toLocaleDateString() : '—'}</td>
+    </tr>`).join('');
+}
+
+// ─── Media ───
+async function handleMediaUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+  showToast('Uploading...', 'success');
+  const url = await cms.uploadMedia(file);
+  if (url) { showToast('✅ Uploaded!', 'success'); loadMedia(); }
+  else showToast('Upload failed. Please try again.', 'error');
+  input.value = '';
+}
+
+async function loadMedia() {
+  // Query the cms_media table via the InsForge client
+  const client = await cms.getClient();
+  if (!client) return;
+  const { data } = await client.from('cms_media').select('*').order('created_at', { ascending: false });
+  const grid = document.getElementById('media-grid');
+  if (!data || !data.length) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><div class="icon">🖼️</div><p>No media uploaded yet.</p></div>'; return; }
+  grid.innerHTML = data.map(m => `
+    <div class="media-item" onclick="navigator.clipboard.writeText('${m.url}'); showToast('URL copied!', 'success')">
+      ${m.mime_type && m.mime_type.startsWith('image/') ? `<img class="media-thumb" src="${m.url}" alt="${m.alt_text || ''}">` : `<div class="media-thumb" style="display:flex;align-items:center;justify-content:center;font-size:2rem">📄</div>`}
+      <div class="media-name">${m.alt_text || m.key}</div>
+    </div>`).join('');
+}
+
+// ─── Boot ───
+window.addEventListener('load', async () => {
+  // Small delay to let the SDK initialize
+  await new Promise(r => setTimeout(r, 300));
+  initDashboard();
+});
+</script>
+</body>
+</html>
